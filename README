@@ -1,0 +1,30 @@
+Este projeto é um website institucional desenvolvido para apresentar um profissional especializado em treinamento de vendas para barbearias.
+O site tem como objetivo fortalecer a presença digital do especialista, comunicar sua proposta de valor e conectar barbeiros e donos de barbearia que desejam aumentar o faturamento através de estratégias de vendas.
+
+O projeto foi desenvolvido utilizando HTML, CSS e JavaScript puro, com foco em um design moderno, leve e responsivo.
+
+Tecnologias Utilizadas
+HTML5 — Estrutura do site
+CSS3 — Estilização e layout responsivo
+JavaScript (Vanilla JS) — Interações da interface
+
+Funcionalidades
+Layout moderno e profissional
+Design responsivo para celular, tablet e desktop
+Estrutura institucional para apresentação do especialista
+Seções de apresentação do método de treinamento
+Destaque para benefícios e resultados para barbearias
+Interface otimizada para experiência do usuário
+
+Estrutura do Projeto
+
+index.html      Estrutura principal do site
+style.css       Estilização da interface
+script.js       Interações em JavaScript
+assets          Imagens e recursos visuais
+
+Objetivo do Projeto
+Este projeto foi desenvolvido com o propósito de:
+
+Criar uma presença digital profissional para um especialista em vendas para barbearias
+Apresentar de forma clara o treinamento e metodologia aplicada no mercado de barbearias.
