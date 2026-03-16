@@ -42,6 +42,27 @@
     ::-webkit-scrollbar-track { background: var(--black-2); }
     ::-webkit-scrollbar-thumb { background: var(--green-dark); border-radius: 2px; }
 
+    @media (max-width: 768px){
+
+    .hero-stat-1{
+    left: -10px;
+    bottom: 20px;
+    }
+
+    .hero-stat-2{
+    right: -10px;
+    top: 20px;
+    }
+
+    .hero-photo-wrap{
+    width: 320px;
+    height: 420px;
+    }
+    @media (max-width: 768px){
+    .hero-stat-2{
+    display: none;
+    }}
+    }
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
       padding: 24px 60px;
