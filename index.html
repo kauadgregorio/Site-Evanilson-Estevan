@@ -154,15 +154,15 @@
     .servicos-header { text-align: center; margin-bottom: 64px; }
     .servicos-header .section-line { margin: 0 auto 48px; }
     .servicos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; max-width: 1100px; margin: 0 auto; }
-    .servico-card { background: var(--black-3); padding: 48px 36px; position: relative; overflow: hidden; transition: all 0.4s ease; border: 1px solid transparent; }
+    .servico-card { background: var(--black-3); padding: 48px 36px 28px; position: relative; overflow: hidden; transition: all 0.4s ease; border: 1px solid transparent; min-height: 640px; display: flex; flex-direction: column; align-items: center; text-align: center; }
     .servico-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 3px; background: var(--green); transition: width 0.4s ease; }
     .servico-card:hover { background: var(--black-4); border-color: rgba(74,222,128,0.12); transform: translateY(-6px); }
     .servico-card:hover::after { width: 100%; }
-    .servico-num { font-family: var(--font-display); font-size: 3.5rem; font-weight: 800; color: rgba(74,222,128,0.07); line-height: 1; margin-bottom: 20px; }
-    .servico-icon { font-size: 2rem; margin-bottom: 16px; display: block; }
-    .servico-nome { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; margin-bottom: 14px; }
-    .servico-desc { color: var(--white-dim); font-size: 0.9rem; line-height: 1.7; margin-bottom: 28px; }
-    .servico-tag { display: inline-block; border: 1px solid rgba(74,222,128,0.3); color: var(--green); font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; padding: 6px 14px; }
+    .servico-num { font-family: var(--font-display); font-size: 3.5rem; font-weight: 800; color: rgba(74,222,128,0.07); line-height: 1; margin-bottom: 36px; }
+    .servico-icon { font-size: 2rem; margin-bottom: 32px; display: flex; align-items: center; justify-content: center; min-height: 40px; }
+    .servico-nome { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; margin-bottom: 22px; min-height: 76px; display: flex; align-items: center; justify-content: center; }
+    .servico-desc { color: var(--white-dim); font-size: 0.9rem; line-height: 1.7; margin-bottom: 28px; max-width: 32ch; flex: 1; display: flex; align-items: center; }
+    .servico-tag { display: inline-block; border: 1px solid rgba(74,222,128,0.3); color: var(--green); font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; padding: 10px 14px; margin-top: auto; width: 100%; }
 
     #sobre { background: var(--black); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
     .sobre-visual { position: relative; }
@@ -183,14 +183,14 @@
 
     #autoridade { background: var(--black-2); text-align: center; }
     .autoridade-header .section-line { margin: 0 auto 48px; }
-    .galeria-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; max-width: 1100px; margin: 0 auto 64px; }
-    .galeria-item { aspect-ratio: 4/3; background: var(--black-3); border: 1px solid rgba(74,222,128,0.06); display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; cursor: pointer; }
+    .galeria-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(2, minmax(220px, 1fr)); gap: 10px; max-width: 1100px; margin: 0 auto 64px; }
+    .galeria-item { min-height: 220px; background: var(--black-3); border: 1px solid rgba(74,222,128,0.06); display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; cursor: pointer; }
     .galeria-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease, filter 0.3s; filter: grayscale(30%); }
     .galeria-item:hover img { transform: scale(1.05); filter: grayscale(0%); }
     .galeria-placeholder { display: flex; flex-direction: column; align-items: center; gap: 8px; }
     .galeria-placeholder span:first-child { font-size: 2.5rem; color: rgba(74,222,128,0.12); }
     .galeria-placeholder span:last-child { font-size: 0.7rem; color: rgba(255,255,255,0.15); letter-spacing: 2px; text-transform: uppercase; }
-    .galeria-item.large { grid-column: span 2; }
+    .galeria-item.main { grid-row: span 2; }
     .depoimentos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; max-width: 1100px; margin: 0 auto; }
     .depoimento-card { background: var(--black-3); padding: 36px 32px; border: 1px solid rgba(74,222,128,0.06); text-align: left; transition: border-color 0.3s; }
     .depoimento-card:hover { border-color: rgba(74,222,128,0.2); }
@@ -257,8 +257,8 @@
       .hero-stat-2 { right: -8px; }
       section { padding: 70px 24px; }
       .servicos-grid, .depoimentos-grid { grid-template-columns: 1fr; }
-      .galeria-grid { grid-template-columns: 1fr 1fr; }
-      .galeria-item.large { grid-column: span 2; }
+      .galeria-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+      .galeria-item.main { grid-row: span 1; min-height: 260px; }
       #sobre, #contato { grid-template-columns: 1fr; gap: 48px; }
       .form-row { grid-template-columns: 1fr; }
       footer { padding: 28px 24px; flex-direction: column; text-align: center; }
@@ -369,14 +369,14 @@
         <div class="servico-num">01</div>
         <span class="servico-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="#4ADE80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><polyline points="9 22 9 12 15 12 15 22" stroke="#4ADE80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <h3 class="servico-nome">Treinamento Presencial</h3>
-        <p class="servico-desc">Treinamento realizado diretamente dentro da sua barbearia. Trabalho com sua equipe no ambiente real para transformar atendimento em vendas consistentes.</p>
+        <p class="servico-desc">Treinamento personalizado realizado diretamente dentro dentro do estabelecimento. Trabalho com a equipe no ambiente real para transformar um simples atendimento em vendas consistentes.</p>
         <span class="servico-tag">Na empresa</span>
       </div>
       <div class="servico-card reveal">
         <div class="servico-num">02</div>
         <span class="servico-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#4ADE80" stroke-width="1.5"/><polyline points="12 6 12 12 16 14" stroke="#4ADE80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <h3 class="servico-nome">Treinamento online e consultoria técnica</h3>
-        <p class="servico-desc">Eventos intensivos com metodologia prática. Barbeiros e gestores aprendem técnicas de vendas e relacionamento com o cliente em um único dia transformador.</p>
+        <p class="servico-desc">A consultoria técnica analisa a performance e entrega um planejamento estratégico; o treinamento online oferece capacitação personalizada para alcançar os resultados desejados.</p>
         <span class="servico-tag">Aberto ao público</span>
       </div>
       <div class="servico-card reveal">
@@ -406,7 +406,7 @@
       <span class="section-label">Sobre mim</span>
       <h2 class="section-title">Especialista em <span style="color:var(--green)">vendas para barbearias e salões de beleza</span></h2>
       <div class="section-line"></div>
-      <p>Sou especialista em vendas com foco no mercado de barbearias e salões de beleza. Com mais de 10 anos de experiência prática, líder de time de vendas e certificado pelo G4 Business, a evolução da escola de negócios. Já treinei diversos profissionais a vender mais, atender melhor e crescer de forma consistente.</p>
+      <p>Sou especialista em vendas com foco no mercado de barbearias e salões de beleza. Com mais de 10 anos de experiência prática, líder de time de vendas e certificado pelo G4 Business, a evolução da escola de negócios. Já treinei diversos profissionais a abordar de forma intencional, negociar com inteligência e vender de forma consistente.</p>
       <p>Minha metodologia é baseada em ação real — sem teoria vazia, com técnicas aplicáveis no dia seguinte ao treinamento. Energia, movimento e resultado são os pilares de cada encontro.</p>
       <div class="sobre-items">
         <div class="sobre-item"><div class="sobre-item-dot"></div><span>Treinamentos presenciais na empresa</span></div>
@@ -424,20 +424,14 @@
       <div class="section-line"></div>
     </div>
     <div class="galeria-grid">
-      <div class="galeria-item large reveal">
-        <div class="galeria-placeholder"><span>📸</span><span>Foto do treinamento</span></div>
+      <div class="galeria-item main reveal">
+        <img src="img/foto flow.JPEG" alt="Treinamento realizado na Flow Barber" loading="lazy" />
       </div>
       <div class="galeria-item reveal">
-        <div class="galeria-placeholder"><span>📸</span><span>Workshop</span></div>
+        <img src="img/foto studio t black.jpeg" alt="Treinamento no Studio T Black" loading="lazy" />
       </div>
       <div class="galeria-item reveal">
-        <div class="galeria-placeholder"><span>📸</span><span>Evento</span></div>
-      </div>
-      <div class="galeria-item reveal">
-        <div class="galeria-placeholder"><span>📸</span><span>Treinamento</span></div>
-      </div>
-      <div class="galeria-item large reveal">
-        <div class="galeria-placeholder"><span>📸</span><span>Foto do treinamento</span></div>
+        <img src="img/foto geral.png" alt="Foto geral de treinamento" loading="lazy" />
       </div>
     </div>
     <div class="depoimentos-grid">
