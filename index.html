@@ -140,7 +140,28 @@
     .hero-photo-wrap { position: relative; width: 420px; height: 520px; }
     .hero-photo-bg { position: absolute; inset: 0; background: linear-gradient(135deg, var(--green-dark), var(--green-mid), var(--green)); clip-path: polygon(0 6%, 100% 0%, 100% 94%, 0% 100%); }
     .hero-photo { position: absolute; inset: 0; overflow: hidden; clip-path: polygon(0 6%, 100% 0%, 100% 94%, 0% 100%); }
-    .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+    .hero-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(8,8,8,0.12) 0%, rgba(8,8,8,0.4) 46%, rgba(8,8,8,0.88) 100%),
+        linear-gradient(135deg, rgba(74,222,128,0.12) 0%, rgba(198,168,106,0.1) 100%);
+      pointer-events: none;
+    }
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      filter: grayscale(14%) saturate(0.92);
+      transform: scale(1.01);
+      transition: transform 0.6s ease, filter 0.4s ease;
+    }
+    .hero-photo:hover img {
+      transform: scale(1.08);
+      filter: grayscale(0%) saturate(1);
+    }
     .hero-photo-placeholder { width: 100%; height: 100%; background: linear-gradient(180deg, #111 0%, #1a1a1a 100%); display: flex; align-items: center; justify-content: center; font-size: 6rem; color: rgba(74,222,128,0.15); }
     .hero-stat { position: absolute; background: var(--black-3); border: 1px solid rgba(74,222,128,0.2); padding: 16px 20px; }
     .hero-stat-1 { bottom: 60px; left: -44px; }
@@ -170,9 +191,26 @@
     #sobre { background: var(--black); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
     .sobre-visual { position: relative; }
     .sobre-img-wrap { aspect-ratio: 3/4; overflow: hidden; border: 1px solid rgba(74,222,128,0.15); position: relative; }
-    .sobre-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top center; filter: grayscale(20%); transition: filter 0.4s; }
-    .sobre-img-wrap:hover img { filter: grayscale(0%); }
-    .sobre-img-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(8,8,8,0.5) 0%, transparent 50%); }
+    .sobre-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      filter: grayscale(14%) saturate(0.92);
+      transform: scale(1.01);
+      transition: transform 0.6s ease, filter 0.4s ease;
+    }
+    .sobre-img-wrap:hover img {
+      transform: scale(1.08);
+      filter: grayscale(0%) saturate(1);
+    }
+    .sobre-img-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(8,8,8,0.12) 0%, rgba(8,8,8,0.4) 46%, rgba(8,8,8,0.88) 100%),
+        linear-gradient(135deg, rgba(74,222,128,0.12) 0%, rgba(198,168,106,0.1) 100%);
+    }
     .sobre-accent { position: absolute; top: -16px; left: -16px; width: 72px; height: 72px; border-top: 3px solid var(--green); border-left: 3px solid var(--green); z-index: 1; }
     .sobre-accent-2 { position: absolute; bottom: -16px; right: -16px; width: 72px; height: 72px; border-bottom: 3px solid var(--green); border-right: 3px solid var(--green); z-index: 1; }
     .sobre-badge { position: absolute; bottom: 32px; left: -24px; background: var(--green); color: var(--black); padding: 16px 20px; z-index: 2; }
