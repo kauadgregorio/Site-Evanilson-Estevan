@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+  <link rel="shortcut icon" href="img/favicon.ico" />
   <title>Evanilson Estevan — Treinamentos de Vendas</title>
-  
   <style>
     @font-face {
       font-family: 'Muring';
@@ -32,6 +33,8 @@
       --black-4: #1E1E1E;
       --white: #F8F8F8;
       --white-dim: #9A9A9A;
+      --gold-soft: #C6A86A;
+      --gold-dim: rgba(198,168,106,0.18);
       --font-display: 'Muring', sans-serif;
       --font-body: 'Muring', sans-serif;
     }
@@ -183,14 +186,131 @@
 
     #autoridade { background: var(--black-2); text-align: center; }
     .autoridade-header .section-line { margin: 0 auto 48px; }
-    .galeria-grid { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(2, minmax(220px, 1fr)); gap: 10px; max-width: 1100px; margin: 0 auto 64px; }
-    .galeria-item { min-height: 220px; background: var(--black-3); border: 1px solid rgba(74,222,128,0.06); display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; cursor: pointer; }
-    .galeria-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease, filter 0.3s; filter: grayscale(30%); }
-    .galeria-item:hover img { transform: scale(1.05); filter: grayscale(0%); }
-    .galeria-placeholder { display: flex; flex-direction: column; align-items: center; gap: 8px; }
-    .galeria-placeholder span:first-child { font-size: 2.5rem; color: rgba(74,222,128,0.12); }
-    .galeria-placeholder span:last-child { font-size: 0.7rem; color: rgba(255,255,255,0.15); letter-spacing: 2px; text-transform: uppercase; }
-    .galeria-item.main { grid-row: span 2; }
+    .galeria-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      max-width: 1100px;
+      margin: 0 auto 64px;
+    }
+    .galeria-card {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(198,168,106,0.08) 0%, transparent 26%),
+        linear-gradient(180deg, rgba(15,15,15,0.96) 0%, rgba(8,8,8,0.98) 100%);
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: 0 20px 55px rgba(0,0,0,0.24);
+      isolation: isolate;
+      transition: transform 0.45s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+    }
+    .galeria-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(8,8,8,0.12) 0%, rgba(8,8,8,0.4) 46%, rgba(8,8,8,0.88) 100%),
+        linear-gradient(135deg, rgba(74,222,128,0.12) 0%, rgba(198,168,106,0.1) 100%);
+      z-index: 1;
+      transition: opacity 0.35s ease;
+    }
+    .galeria-card::after {
+      content: '';
+      position: absolute;
+      inset: 14px;
+      border: 1px solid rgba(198,168,106,0.2);
+      opacity: 0;
+      transform: scale(0.97);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .galeria-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(198,168,106,0.34);
+      box-shadow: 0 28px 70px rgba(0,0,0,0.34);
+    }
+    .galeria-card:hover::after {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .galeria-card:hover::before { opacity: 0.92; }
+    .galeria-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: grayscale(14%) saturate(0.92);
+      transform: scale(1.01);
+      transition: transform 0.6s ease, filter 0.4s ease;
+    }
+    .galeria-card:hover img {
+      transform: scale(1.08);
+      filter: grayscale(0%) saturate(1);
+    }
+    .galeria-content {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 18px;
+    }
+    .galeria-tag {
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      background: rgba(8,8,8,0.58);
+      border: 1px solid var(--gold-dim);
+      color: var(--gold-soft);
+      font-size: 0.68rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .galeria-tag::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 12px rgba(74,222,128,0.5);
+    }
+    .galeria-info {
+      display: grid;
+      gap: 8px;
+      text-align: left;
+    }
+    .galeria-info h3 {
+      font-family: var(--font-display);
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.4px;
+    }
+    .galeria-info p {
+      max-width: 26ch;
+      color: rgba(248,248,248,0.74);
+      font-size: 0.82rem;
+      line-height: 1.65;
+    }
+    .galeria-info span {
+      font-size: 0.72rem;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: rgba(248,248,248,0.54);
+    }
+    .galeria-card.reveal { transition: opacity 0.7s ease, transform 0.7s ease; }
+    .galeria-card.reveal.visible { transform: translateY(0); }
+    .galeria-grid .galeria-card:nth-child(2).visible,
+    .galeria-grid .galeria-card:nth-child(2) { transition-delay: 0.08s; }
+    .galeria-grid .galeria-card:nth-child(3).visible,
+    .galeria-grid .galeria-card:nth-child(3) { transition-delay: 0.16s; }
     .depoimentos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; max-width: 1100px; margin: 0 auto; }
     .depoimento-card { background: var(--black-3); padding: 36px 32px; border: 1px solid rgba(74,222,128,0.06); text-align: left; transition: border-color 0.3s; }
     .depoimento-card:hover { border-color: rgba(74,222,128,0.2); }
@@ -257,8 +377,7 @@
       .hero-stat-2 { right: -8px; }
       section { padding: 70px 24px; }
       .servicos-grid, .depoimentos-grid { grid-template-columns: 1fr; }
-      .galeria-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
-      .galeria-item.main { grid-row: span 1; min-height: 260px; }
+      .galeria-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       #sobre, #contato { grid-template-columns: 1fr; gap: 48px; }
       .form-row { grid-template-columns: 1fr; }
       footer { padding: 28px 24px; flex-direction: column; text-align: center; }
@@ -268,6 +387,10 @@
       .hero-actions { flex-direction: column; align-items: center; }
       .btn-primary, .btn-whatsapp { text-align: center; width: 100%; justify-content: center; }
       .sobre-items { grid-template-columns: 1fr; }
+      .galeria-grid { grid-template-columns: 1fr; gap: 14px; }
+      .galeria-content { padding: 16px; }
+      .galeria-info h3 { font-size: 1rem; }
+      .galeria-info p { font-size: 0.78rem; }
     }
 
     .depoimentos-grid {
@@ -424,15 +547,39 @@
       <div class="section-line"></div>
     </div>
     <div class="galeria-grid">
-      <div class="galeria-item main reveal">
+      <article class="galeria-card reveal">
         <img src="img/foto flow.JPEG" alt="Treinamento realizado na Flow Barber" loading="lazy" />
-      </div>
-      <div class="galeria-item reveal">
-        <img src="img/foto studio t black.jpeg" alt="Treinamento no Studio T Black" loading="lazy" />
-      </div>
-      <div class="galeria-item reveal">
+        <div class="galeria-content">
+          <span class="galeria-tag">Treinamento</span>
+          <div class="galeria-info">
+            <span>Flow Barber</span>
+            <h3>Imersao comercial com foco em conversao</h3>
+            <p>Dinâmica prática para alinhar abordagem, postura e fechamento com a equipe.</p>
+          </div>
+        </div>
+      </article>
+      <article class="galeria-card reveal">
         <img src="img/foto geral.png" alt="Foto geral de treinamento" loading="lazy" />
-      </div>
+        <div class="galeria-content">
+          <span class="galeria-tag">Workshop</span>
+          <div class="galeria-info">
+            <span>Treinamento presencial</span>
+            <h3>Ambiente de alta energia com execucao real</h3>
+            <p>Encontros desenhados para acelerar consistência comercial sem poluir a comunicação visual.</p>
+          </div>
+        </div>
+      </article>
+      <article class="galeria-card reveal">
+        <img src="img/foto studio t black.jpeg" alt="Treinamento no Studio T Black" loading="lazy" />
+        <div class="galeria-content">
+          <span class="galeria-tag">Treinamento</span>
+          <div class="galeria-info">
+            <span>Studio T Black</span>
+            <h3>Capacitacao de time com experiencia premium</h3>
+            <p>Conteúdo aplicado ao atendimento para elevar percepção de valor e resultado.</p>
+          </div>
+        </div>
+      </article>
     </div>
     <div class="depoimentos-grid">
       <div class="depoimento-card reveal">
