@@ -1700,18 +1700,23 @@
       }
 
       .hero {
-        min-height: auto;
+        min-height: 100svh;
+        min-height: 100dvh;
+        align-items: stretch;
       }
 
       .hero::before {
         background:
-          linear-gradient(180deg, rgba(5, 8, 6, 0.46) 0%, rgba(5, 8, 6, 0.9) 56%, #050806 100%),
-          url("img/Foto Header.png") center top / cover no-repeat;
+          linear-gradient(180deg, rgba(5, 8, 6, 0.38) 0%, rgba(5, 8, 6, 0.74) 44%, #050806 100%),
+          linear-gradient(90deg, rgba(5, 8, 6, 0.92) 0%, rgba(5, 8, 6, 0.44) 72%, rgba(5, 8, 6, 0.16) 100%),
+          url("img/Foto Header.png") 62% top / cover no-repeat;
       }
 
       .hero-inner {
-        padding: 46px 0 34px;
-        transform: translateY(-18px);
+        display: flex;
+        align-items: center;
+        padding: calc(76px + env(safe-area-inset-top)) 0 72px;
+        transform: none;
       }
 
       .hero h1 {
