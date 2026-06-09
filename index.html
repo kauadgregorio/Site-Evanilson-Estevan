@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -511,19 +511,29 @@
     }
 
     .hero-content {
-      max-width: 770px;
+      max-width: min(700px, 48vw);
     }
 
     .hero h1 {
       margin-top: 20px;
       color: var(--text);
-      font-size: clamp(3rem, 8vw, 7.6rem);
-      line-height: 0.88;
+      font-size: clamp(5.2rem, 4.55vw, 5.75rem);
+      line-height: 0.95;
       font-weight: 900;
       letter-spacing: 0;
     }
 
     .hero h1 span {
+      color: var(--green);
+    }
+
+    .hero h1 .hero-title-line {
+      display: block;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .hero h1 .hero-title-line.accent {
       color: var(--green);
     }
 
@@ -534,6 +544,35 @@
       font-size: clamp(1.05rem, 2vw, 1.32rem);
       line-height: 1.65;
       font-weight: 500;
+    }
+
+    .hero-proof {
+      display: grid;
+      gap: 8px;
+      margin-top: 28px;
+      padding: 0;
+      list-style: none;
+      color: #e6efe8;
+      font-size: 0.95rem;
+      line-height: 1.45;
+      font-weight: 800;
+    }
+
+    .hero-proof li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .hero-proof li::before {
+      content: "";
+      flex: 0 0 auto;
+      width: 7px;
+      height: 7px;
+      margin-top: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 14px rgba(74, 222, 128, 0.72);
     }
 
     .hero-actions {
@@ -1736,7 +1775,7 @@
       }
 
       .hero h1 {
-        font-size: clamp(2.3rem, 9.2vw, 3rem);
+        font-size: clamp(2rem, 8.7vw, 2.9rem);
         max-width: 100%;
       }
 
@@ -1874,7 +1913,13 @@
       <div class="hero-inner">
         <div class="hero-grid">
           <div class="hero-content reveal">
-            <h1>Venda melhor. <span>Cresça de verdade.</span></h1>
+            <span class="section-kicker">Estratégia comercial para clínicas e negócios na área da saúde</span>
+            <h1>
+              <span class="hero-title-line">Sua clínica está</span>
+              <span class="hero-title-line">perdendo pacientes</span>
+              <span class="hero-title-line accent">todos os dias</span>
+              <span class="hero-title-line accent">sem perceber.</span>
+            </h1>
             <p class="hero-subtitle">
               Implanto processos comerciais, treinamento de equipe, CRM, acompanhamento e estratégias de crescimento
               para transformar clínicas em operações previsíveis, lucrativas e escaláveis.
@@ -1889,6 +1934,12 @@
               </a>
               <a class="btn btn-secondary" href="#servicos">Conhecer a metodologia</a>
             </div>
+            <ul class="hero-proof" aria-label="Prova social">
+              <li>+10 anos atuando com venda consultiva</li>
+              <li>Experiência prática em estruturação comercial</li>
+              <li>Processos aplicados em negócios reais</li>
+              <li>Foco em clínicas e empresas da área da saúde</li>
+            </ul>
           </div>
         </div>
       </div>
